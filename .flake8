@@ -1,0 +1,28 @@
+[flake8]
+# see https://flake8.pycqa.org/en/latest/user/configuration.html
+ignore =
+    #
+    # allow complex functions
+    C901,
+    D203,
+    # continuation line missing indentation or outdented
+    E122,
+    E126,
+    # allow continuation line over-indented for hanging indent
+    E501,
+    # allow lambda functions
+    E731,
+    # allow ambiguous variable names
+    E741,
+    # allow unused local variables
+    F821,
+    # undefined name
+    F841,
+    # allow to annotate not used variables
+    F842,
+    # allow line break before binary operator
+    W503
+
+
+max-line-length=120
+max-complexity = 10
