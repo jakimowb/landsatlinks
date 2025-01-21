@@ -24,7 +24,7 @@ def check_for_broken_links(links: list) -> bool:
     pattern = f'({pattern1})|({pattern2})'
     broken_links = [link for link in links if not re.match(pattern, link)]
     if broken_links:
-        print(f'Some links seem to be broken, please check:')
+        print('Some links seem to be broken, please check:')
         print(*broken_links, sep='\n')
         exit(1)
 
@@ -105,7 +105,7 @@ def download(urls: list, output_dir: str, n_tasks: int = 4, force_queue_fp: str 
     # set up watcher to listen for new results that can be added to the force_queue
     watcher = pool.apply_async(dl_listener_for_force_queue, (output_dir, force_queue_fp, mp_queue))
 
-    progress_bar = tqdm(total=len(urls), desc=f'Downloading', unit='product bundle', ascii=' >=')
+    progress_bar = tqdm(total=len(urls), desc='Downloading', unit='product bundle', ascii=' >=')
 
     def callback(url):
         progress_bar.update()
