@@ -43,7 +43,7 @@ def find_files(search_path: str, search_type: str,
             '^L[C-T]0[45789]_L1[A-Z]{2}_[0-9]{6}_[0-9]{8}_[0-9]{8}_0[12]_(RT|T1|T2)(.tar){0,1}(.gz){0,1}$'
         if no_partial_dls:
             regex_pattern_aria = re.compile(regex_pattern_string.replace('$', '.aria2$'))
-            aria_tempfiles = [re.sub('\.tar\.aria2$', '', file_path.name) for file_path in file_paths
+            aria_tempfiles = [re.sub(r'\.tar\.aria2$', '', file_path.name) for file_path in file_paths
                               if re.match(regex_pattern_aria, file_path.name)]
 
     elif search_type == 'log':
@@ -113,7 +113,9 @@ def load_secret(file_path: str) -> list:
     full_path = os.path.realpath(file_path)
     validate_file_paths(full_path, 'secrets', file=True, write=False)
     with open(file_path) as file:
-        secret = [line.rstrip() for line in file]
+        secret = file.read().strip().split()
+        # not sure if tokens and passwords can contain spaces?
+        secret = [s.strip() for s in secret]
     if (
             len(secret) not in [2, 3] or
             len(secret) == 2 and secret[0] == 'app-token' or
