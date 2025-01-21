@@ -1,9 +1,10 @@
-from codecs import open
-from landsatlinks import __version__
-from os.path import abspath, dirname, join
-from setuptools import find_packages, setup
 import sys
+from codecs import open
+from os.path import abspath, dirname, join
 
+from setuptools import find_packages, setup
+
+from landsatlinks import __version__
 
 if sys.version_info < (3, 6):
     sys.exit('You need Python 3.6 or newer to install this package. Exiting.')
@@ -11,7 +12,6 @@ if sys.version_info < (3, 6):
 this_dir = abspath(dirname(__file__))
 with open(join(this_dir, 'README.md'), encoding='utf-8') as file:
     long_description = file.read()
-
 
 setup(
     name='landsatlinks',

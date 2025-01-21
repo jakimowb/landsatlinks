@@ -2,11 +2,9 @@ import argparse
 from datetime import date
 
 from landsatlinks import __version__
-from landsatlinks.utils import PROG_NAME
 
 
 def parse_cli_arguments():
-
     currentDate = date.today().strftime('%Y%m%d')
 
     parser = argparse.ArgumentParser(
@@ -102,10 +100,9 @@ def parse_cli_arguments():
     parser_search.add_argument(
         '--secret',
         help='Path to the file containing the username and password/app-token for M2MApi access (EarthExplorer login).\n'
-            'a) 1st line: user, 2nd line: password - deprecated by the USGS API from February 2025\n'
-            'b) 1st line: "app-token", 2nd line: user, 3rd line: token'
+             'a) 1st line: user, 2nd line: password - deprecated by the USGS API from February 2025\n'
+             'b) 1st line: "app-token", 2nd line: user, 3rd line: token'
     )
-
 
     # Download parser arguments
     parser_dl = subparsers.add_parser(

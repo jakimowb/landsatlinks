@@ -77,6 +77,7 @@ def check_date_validity(dates: list, name: str) -> None:
             print(f'Error: {name} dates not provided in format YYYYMMDD,YYYYMMDD or date is invalid.\ndate')
             exit(1)
 
+
 def check_tile_validity(tile_list: list) -> bool:
     regex_pattern = re.compile('^[0-2][0-9]{2}[0-2][0-9]{2}$')
     tiles_valid = True

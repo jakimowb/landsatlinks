@@ -22,7 +22,8 @@ ignore =
     F842,
     # allow line break before binary operator
     W503
-
+    # allow line break after binary operator
+    W504
 
 max-line-length=120
 max-complexity = 10

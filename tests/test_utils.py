@@ -1,7 +1,7 @@
-import unittest
-import tempfile
 import os
+import unittest
 from pathlib import Path
+
 from landsatlinks.utils import load_secret
 
 
@@ -17,7 +17,6 @@ class TestUtils(unittest.TestCase):
         return path
 
     def test_load_secret(self):
-
         result1 = ['app-token', 'user', 'token']
         result2 = ['user', 'password']
         valid_examples = [
@@ -36,7 +35,7 @@ class TestUtils(unittest.TestCase):
             with open(path, 'w') as f:
                 f.write(example)
             result = load_secret(path.as_posix())
-            self.assertEqual(result, expected, f'Example {i+1}:"{example}"\nexpected {expected}, got {result}')
+            self.assertEqual(result, expected, f'Example {i + 1}:"{example}"\nexpected {expected}, got {result}')
 
 
 if __name__ == '__main__':
