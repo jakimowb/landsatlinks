@@ -1,4 +1,3 @@
-import json
 import multiprocessing
 import multiprocessing as mp
 import os
@@ -20,8 +19,8 @@ def load_links(filepath: str) -> list:
 
 
 def check_for_broken_links(links: list) -> bool:
-    pattern1 = '^https://landsatlook\.usgs\.gov/gen-bundle\?landsat_product_id='
-    pattern2 = '^https://dds\.cr\.usgs\.gov/download/'
+    pattern1 = r'^https://landsatlook\.usgs\.gov/gen-bundle\?landsat_product_id='
+    pattern2 = r'^https://dds\.cr\.usgs\.gov/download/'
     pattern = f'({pattern1})|({pattern2})'
     broken_links = [link for link in links if not re.match(pattern, link)]
     if broken_links:
@@ -128,7 +127,6 @@ def download(urls: list, output_dir: str, n_tasks: int = 4, force_queue_fp: str 
 
 
 def download_standalone(links_fp: str, output_dir: str, n_tasks: int = 4, queue_fp: str = None) -> str:
-
     print(f'\nLoading urls from {links_fp}\n')
     urls = load_links(links_fp)
     check_for_broken_links(urls)
